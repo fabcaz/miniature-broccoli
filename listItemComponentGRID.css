@@ -1,0 +1,183 @@
+*, *::before, *::after {
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.noteContentChild{
+  color: white;
+  background-color: var(--maincontent_3rdLayer_backgroundcolor_DK2);
+  box-shadow: inset 3px 3px 2px rgb(70, 60, 70);
+  border-radius: 5px;
+}
+
+
+.noteList__noteContentGrid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 5px;
+  grid-template-areas:
+    "nN  nN  nN  nT5T nT5T nMTS"
+    "nN  nN  nN  nT5T nT5T nMTS"
+    "nD  nD  nD  nD   nCTS nCTS"
+    "nD  nD  nD  nD   nCTS nCTS"
+    "nD  nD  nD  nD   nCTS nCTS"
+    "nCN nCN nCN nCN  nCTS nCTS"
+    "nCN nCN nCN nCN  nCTS nCTS"
+    "nCN nCN nCN nCN  nCTS nCTS";
+
+  min-inline-size: 90%;
+  min-block-size: 30%;
+  max-inline-size: 25vw;
+  max-block-size: 35vh;
+  
+  position: relative;
+
+  background-color: var(--maincontent_2ndLayer_backgroundcolor_DK2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px 15px 10px 10px;
+  margin: 20px;
+  
+  font-size: 0.7rem;
+}
+
+/*TODO change this so that the box-shadow is always on the grid but with opacity:0, and the hover transitions the opacity to 1  */
+.noteList__noteContentGrid:hover{
+  transform: scale(120%);
+  box-shadow: 0 0 5px 4px white;
+}
+
+.noteName{
+  grid-area: nN;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noteTop5Tags{
+  grid-area: nT5T;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+  padding: 3px;
+  text-decoration: none;
+  list-style: none;
+  justify-content: space-around;
+}
+
+
+.tagItem{
+  display: inline;
+  padding: 3px;
+  background-color: rgb(130, 14, 183);
+  border-width: 2px;
+  border-radius: 50px;
+}
+
+.tagLink{
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.moreActions{
+  display: none;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  inline-size: 3ch;
+}
+
+.noteMetaTimeStamps {
+  grid-area: nMTS;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.creationDate{
+  position: relative;
+}
+
+.creationDate::before{
+  content: 'created:';
+  position: absolute;
+  top: -100%;
+
+  font-style: italic;
+}
+
+.lastUpdateDate{
+  position: relative;
+}
+
+.lastUpdateDate::before{
+  content: 'last update:';
+  position: absolute;
+  top: -100%;
+  white-space: nowrap;
+
+  font-style: italic;
+}
+
+.noteDescription{
+  grid-area: nD;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-width: 7px;
+  border-color: darkviolet;
+}
+
+.noteContentNotes{
+  grid-area: nCN;
+  border-color: chartreuse;
+  border-width: 7px;
+  overflow: hidden;
+}
+
+.noteContentTimeStamps {
+  grid-area: nCTS;
+  overflow: hidden;
+}
+
+.noteContentTimeStamps > p{
+  border-top: solid 2px rgb(230, 230, 230);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+ 
+.noteContentTimeStamps > p:first-child{
+  border-top: none;
+}
+
+@media all and (max-width: 700px) {
+
+  /*should make a different layout for smaller viewport width as the date cells overflow out of grid*/
+  .noteList__noteContentGrid{
+    grid-template-areas:
+      "nN   nN   nN   nN   nN   nMTS"
+      "nT5T nT5T nT5T nT5T nT5T nMTS"
+      "nD   nD   nD   nD   nCTS nCTS"
+      "nD   nD   nD   nD   nCTS nCTS"
+      "nD   nD   nD   nD   nCTS nCTS"
+      "nCN  nCN  nCN  nCN  nCTS nCTS"
+      "nCN  nCN  nCN  nCN  nCTS nCTS"
+      "nCN  nCN  nCN  nCN  nCTS nCTS";
+  }
+}

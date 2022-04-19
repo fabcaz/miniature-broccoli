@@ -1,0 +1,117 @@
+@import "globalProps.css";
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body_background_color_DK2);
+  font-family: sans-serif;
+}
+
+/* || PageContentWrapper*/
+.pageContentWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
+
+/* || TreeView    */
+.categoryTreeView{
+  display: inline-flex;
+  flex-direction: column;
+  border: var(--TTnavBar_border);
+
+  block-size: 90vh;
+  inline-size: 10vw;
+
+  overflow: auto;
+  margin:10px 0px 10px 10px;
+  position: relative;
+  min-width: 200px;
+  color: white;
+  background-color: var(--maincontent_2ndLayer_backgroundcolor_DK2);
+
+}
+
+.categoryTreeView ul {
+ padding-inline-start: 32px;
+ list-style: none;
+}
+
+.categoryTreeView__nestedListTitle {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.categoryTreeView__nestedListTitle::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.categoryTreeView__nestedListTitle--active::before {
+  transform: rotate(90deg);
+}
+
+.categoryTreeView li {
+  display: flex;
+  flex-direction: column;
+  align-content: end;
+  flex-wrap: nowrap; 
+}
+
+.hasDescendents{
+  max-inline-size: 6ch;
+  max-block-size: 1rem;
+  overflow: hidden;
+  background-color: var(--item_count_backgroundcolor_DK2);
+  border: solid var(--item_count_backgroundcolor_DK2);
+  padding-inline: 3px;
+  border-width: 1px;
+  border-radius: 0.6875rem;
+  color: white;
+  position: absolute;
+  left: 3px;
+  text-overflow: ellipsis;
+  font-size: 0.6875rem;
+
+}
+
+.categoryTreeView__nestedList{
+  display: none;
+}
+
+.categoryTreeView__nestedList--active{
+  display: block;
+}
+
+
+/* || MainContent*/
+.mainContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  inline-size: 80vw;
+  block-size: 90vh;
+  margin: 20px 10px 10px 0px;
+  position: relative;
+
+  list-style: none;
+}
+
+.mainContent__item{
+  grid-column: span 1;
+}
+
+@media all and (max-width: 900px){
+
+  .mainContent__item{
+    grid-column: span 2;
+  }
+}

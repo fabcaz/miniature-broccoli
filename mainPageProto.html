@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<!--
+TODO:
+  - add uuid in data-uuid attr or wrap the cards in anchor elemes so that clicking it requests the rest of the note / GETS the page for the note
+-->
+<html lang="en">
+  <head>
+    <title>OOOO</title>
+    <meta charset="UTF-8">
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="navBarStyling.css">
+    <link rel="stylesheet" href="contentStyling.css">
+    <link rel="stylesheet" href="listItemComponentGRID.css">
+    <link rel="icon" href="notesLogo.png">
+
+  </head>
+  <body>
+    <nav class="navBar">
+
+      <a href="#" class="navLogo noTextDeco"> NOTES </a>
+        <ul class="navBar__mainMenu" id="nav_main_menu_id">
+          <li class="navBar__mainMenu__li">
+            <a class="navBar__dropdown__link noTextDeco" href="#">TAGS</a>
+          </li>
+          <li class="navBar__mainMenu__li">
+            <a class="navBar__dropdown__link noTextDeco" href="#">CATEGORIES</a>
+          </li>
+          <li class="navBar__mainMenu__li navBar__dropdown">
+            <a class="navBar__dropdown__link noTextDeco" href="">Create New Note ></a>
+ <!-- links will be set by thymeleaf-->
+            <div class="navBar__dropdown__createNewNoteByType">
+              <ul>
+                <li class="navBar__dropdown__li">
+                  <a class="navBar__dropdown__link noTextDeco">Video</a>
+                </li>
+                <li class="navBar__dropdown__li">
+                  <a class="navBar__dropdown__link noTextDeco" href="#">Blog Post</a>
+                </li>
+                <li class="navBar__dropdown__li">
+                  <a class="navBar__dropdown__link noTextDeco" href="#">Article</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+          
+      <div class="navBar__hamburger" id="hamburger_btn">
+        <div class="navBar__hamburger__line" ></div>
+        <div class="navBar__hamburger__line" ></div>
+        <div class="navBar__hamburger__line" ></div>
+      </div> 
+    </nav>
+
+ <!--should make path to current category --active -->
+ <!-- tree of dropdowns. tree view of topic hierarchy-->
+  <div class="pageContentWrapper">
+    <aside id="categoryTreeView" class="categoryTreeView">
+        <ul class="categoryTreeView__rootList">
+          <li>nested1</li>
+          <li id="breadCategory">
+            <span class="hasDescendents">3</span>
+            <span class="categoryTreeView__nestedListTitle">Bread</span>
+            <ul class="categoryTreeView__nestedList" id="a1a2a3ooBranch">
+              <li id="BaguettesCategory">
+                <span class="hasDescendents">1</span>
+                <span class="categoryTreeView__nestedListTitle">Baguettes</span>
+                <ul class="categoryTreeView__nestedList" id="BaguettesBranch">
+                  <li id="BaguettesCerealesCategory">
+                    <span class="hasDescendents">0</span>
+                    <span class="categoryTreeView__nestedListTitle">Baguettes Cereales</span>
+                    <ul class="categoryTreeView__nestedList" id="BaguettesBranch">
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li id="SarrasinCategory">
+                <span class="hasDescendents">0</span>
+                <span class="categoryTreeView__nestedListTitle">Sarrasin</span>
+                <ul class="categoryTreeView__nestedList" id="SarrasinBranch">
+                </ul>
+              </li>
+              <li id="SourdoughCategory">
+                <span class="hasDescendents">0</span>
+                <span class="categoryTreeView__nestedListTitle">Sourdough</span>
+                <ul class="categoryTreeView__nestedList" id="SourdoughBranch">
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="a1Parent">
+            <span class="hasDescendents">+999</span>
+            <span class="categoryTreeView__nestedListTitle" id="a1ParentSpan">A1</span>
+          
+            <ul class="categoryTreeView__nestedList" id="a1Branch">
+            
+            </ul>
+          </li>
+          <li>
+            <span class="categoryTreeView__nestedListTitle">things</span>          
+            <span class="hasDescendents">2</span>
+            <ul class="categoryTreeView__nestedList">
+              <li>
+                <span class="categoryTreeView__nestedListTitle">thing1</span>          
+                <span class="hasDescendents">0</span>
+                <ul class="categoryTreeView__nestedList">
+                </ul>
+              </li>
+              <li>
+                <span class="categoryTreeView__nestedListTitle">thing2</span>          
+                <span class="hasDescendents">0</span>
+                <ul class="categoryTreeView__nestedList">
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+      </aside>
+
+      <ul id="mainContent" class="mainContent">
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+        <li class="mainContent__item">
+          <div class="noteList__noteContentGrid">
+
+            <p class="noteName noteContentChild">Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            <ul class="noteTop5Tags noteContentChild">
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_1">taggg 1</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_2">taggg 2</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_3">taggg 3</a>
+              </li>
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_4">taggg 4</a>
+              </li>
+
+              <li class="tagItem">
+                <a class="tagLink" href="http://l:9999/taggg_5">taggg 5</a>
+              </li>
+
+            </ul>
+            <ul class="noteMetaTimeStamps noteContentChild">
+              <li class="creationDate">01-12-22</li>
+              <li class="lastUpdateDate">02-13-23</li>
+            </ul>
+            <!-- <div class="moreActions noteContentChild">...</div> -->
+
+            <p class="noteDescription noteContentChild">
+              Description:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="noteContentNotes noteContentChild">
+              Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="noteContentTimeStamps noteContentChild">
+              <p>00.01.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.02.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+              <p>00.03.00 -  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+    </div>
+  </body>
+
+  <script>
+    const toggle_hamburger_menu = document.getElementById("hamburger_btn");
+    const nav_list = document.getElementById("nav_main_menu_id");
+    const categoryTreeView = document.getElementById("categoryTreeView");
+    const mainContent = document.getElementById("mainContent");
+
+    categoryTreeView.addEventListener('click', toggleCategory);
+    mainContent.addEventListener('click', getFullNotePage);
+
+    toggle_hamburger_menu.addEventListener('click', () => {
+            nav_list.classList.toggle('active_menu');
+            toggle_hamburger_menu.classList.toggle('nav_hamburger--clicked');
+          }
+    );
+
+    function toggleCategory(ev){
+
+      ev.target.classList.toggle("categoryTreeView__nestedListTitle--active");
+      ev.target
+        .parentElement.children[2] // querySelector("ul.categoryTreeView__nestedList")
+        .classList.toggle("categoryTreeView__nestedList--active");
+    }
+
+
+    function getFullNotePage(ev){
+      let noteClass = "noteList__noteContentGrid";
+      let noteChildClass = "noteContentChild";
+      let t = ev.target;
+      let url;
+          if(t.classList.contains(noteClass)){
+            url = t.dataset.url;
+            getNoteFromNthDescendent(0, t);
+          }else if(t.classList.contains(noteChildClass)){
+            url = t.parentElement.dataset.url;
+            getNoteFromNthDescendent(1, t);
+          }else if(t.parentElement.classList.contains(noteChildClass)){
+            // li.creationDate, li.lastUpdateDate; li.tagItem(will link to list of notes with this tag)
+            url = t.parentElement.parentElement.dataset.url;
+            getNoteFromNthDescendent(2, t);
+          }
+
+        console.log();
+        let req = new XMLHttpRequest();
+        req.open('GET', url);
+        req.send();
+
+    }
+    
+    //  could put depth as a dataset-attr of each noteContentGrid descendent 
+    //but that's a lot of extra code if a note is long
+    function getNoteFromNthDescendent(n, nthDescendent){
+      console.log(nthDescendent);
+      curr = nthDescendent;
+      while(n>0){
+        curr = nthDescendent.parentElement;
+        n--;
+      }
+      //alert(curr.classList)
+    }
+
+  </script>
+
+</html>  
+

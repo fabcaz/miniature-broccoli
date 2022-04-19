@@ -1,0 +1,325 @@
+/*@import "testingRedBorders.css";*/
+@import "globalProps.css";
+
+/* TODO
+ add *:focus to either add box-shadow or change bg-color
+ teg select should have overflow:auto and a mx heigth
+ 
+ */
+
+
+*, *::before, *::after{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*all sections should be able to scroll*/
+main {
+  display: flex;
+  flex-grow: 1;
+  block-size: 90vh;
+  inline-size: 98vw;
+}
+
+body {
+  background-color: var(--body_background_color_DK2);
+  font-family: sans-serif;
+}
+
+form{
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-areas: 
+    "name desc desc"
+    "url  desc desc"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  nS   tD"
+    "tSS  tS   cS";
+
+  margin: 10px 10px 10px 10px;
+
+  block-size: 95%;
+  inline-size: 100%;
+  color: rgb(240, 240, 240);
+
+}
+
+.formSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
+  position: relative;
+
+  border-radius: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background-color: var(--maincontent_2ndLayer_backgroundcolor_DK2);
+}
+
+.formSection__heading{
+
+}
+
+.formSection__addNewItemBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  block-size: 2ch;
+  inline-size: 2ch;
+
+  cursor: pointer;
+  
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  background: linear-gradient(to right, purple, red, orange);
+  border-radius: 50%;
+  border-color: rgb(133, 133, 133)
+}
+
+.formSection__inputElem{
+  inline-size: 90%;
+}
+
+.formSection__textArea{
+
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.formSection__metaDataInputList{
+  list-style: none;
+}
+
+.formSection__contentInputList{
+  list-style: none;
+  inline-size: 90%;
+}
+
+.genericInputStyling{
+
+  border-radius: 6px;
+  padding: 5px; 
+
+  background-color: var(--maincontent_3rdLayer_backgroundcolor_DK2);
+  color: rgb(240, 240, 240);
+}
+
+#titleSection{
+  grid-area: name;
+}
+
+#titleSection h3::after{
+  content: "*";
+  color: red;
+}
+
+#urlSection{
+  grid-area: url;
+}
+
+#timeStampSection{
+  grid-area: tSS;
+
+}
+
+/*only needed to place all tree btns in one cell of the grid */
+.inputComponentBtnWrapper{
+  grid-area: btnWrapper;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+
+} 
+
+.inputComponentBtn {
+    inline-size: 20px;
+    block-size: 20px;
+    border-radius: 6px;
+    margin-right: 2px;
+    border: 1px;
+}
+
+
+#descriptionSection{
+  grid-area: desc;
+  padding-block-end: 10px;
+}
+
+#descriptionInput{
+  max-inline-size: 60vw;
+  padding-block-end: 10px;
+
+  block-size: 100%;
+  inline-size: 100%;
+
+  /* in firefox the textArea was longer than its parent */
+  max-block-size: calc(100% - 30px);
+}
+
+
+#termDefsSection{
+  grid-area: tD;
+  padding-block-end: 10px;
+  
+}
+
+.ComponentBtnWrapper{
+  grid-area: btnWrapper;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+
+} 
+
+#notesSection{
+  grid-area: nS;
+  padding-block-end: 10px;
+  
+}
+
+#noteContentInput{
+  max-inline-size: 30vw;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+#tagSection{
+  grid-area: tS;
+  
+}
+
+.tagSection__select{
+  background-color: var(--maincontent_3rdLayer_backgroundcolor_DK2);
+  color: white;
+}
+
+#categorySection{
+  grid-area: cS;
+  
+}
+
+.twoInputElement {
+  display: grid;
+  grid-template-columns: 10ch auto;
+  grid-template-rows: 20px 1fr;
+  grid-template-areas: 
+    "dICInput     btnWrapper"
+    "dICTextArea  dICTextArea";
+  position: relative;
+
+  margin-bottom: 10px;
+  box-shadow: 1px 0px 4px 1px grey;
+
+  border-radius: 6px;
+}
+
+.twoInputElement--active {
+  grid-template-columns: 10ch auto;
+  grid-template-rows: 20px 1fr;
+}
+
+.twoInputElement__smallInputField{
+  grid-area: dICInput;
+  
+}
+
+.twoInputElement__bigInputField{
+  grid-area: dICTextArea;
+  position: relative;
+
+  resize: vertical;
+  min-block-size: 30px;
+  max-block-size: 200px;
+  
+  block-size: 30px;
+  text-overflow: ellipsis;
+
+}
+
+
+.twoInputElement--active .twoInputElement__bigInputField{
+  block-size: 200px;
+}
+
+input:invalid, .invalidUserInput{
+  border: red dashed 5px;
+}
+
+.tagItem{
+  display: inline-flex;
+  align-items: center;
+
+  background-color: rgb(130, 14, 183);
+  color: rgb(240, 240, 240);
+
+  padding: 5px;
+  border-width: 2px;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+.tagItem__name{
+  margin-right: 8px;
+}
+
+.tagItem__rmBtn{
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+@media all and (max-width: 1000px) {
+
+  main {
+    block-size: auto;
+  }
+
+  form {
+    grid-template-rows: none;
+    grid-template-areas: 
+      "name name url"
+      "tSS  tSS  tSS"
+      "tSS  tSS  tSS"
+      "tSS  tSS  tSS"
+      "desc desc desc"
+      "desc desc desc"
+      "nS   nS   nS"
+      "nS   nS   nS"
+      "tD   tD   tD"
+      "cS   cS   cS"
+      "tS   tS   tS";
+  }
+
+  /* changed max width since it will be one elem per column*/
+  #descriptionInput{
+    max-inline-size: 90vw;
+    min-inline-size: 90vw;
+    min-block-size: 10vh;
+    max-block-size: 80vh;
+  }
+
+  /* changed max width since it will be one elem per column*/
+  #noteContentInput{
+    max-inline-size: 90vw;
+    min-inline-size: 90vw;
+    min-block-size: 10vh;
+    max-block-size: 80vh;
+  }
+}

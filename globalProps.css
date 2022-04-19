@@ -1,0 +1,46 @@
+:root {
+
+
+--navBar_bordercolor_NONE: none;
+--navBar_border: none;
+--TTnavBar_border: solid rgb(0,0,0);
+
+--navBar_li_hover_backgroundcolor: pink;
+--TTnavBar_li_backgroundcolor: grey;
+
+--navBar_textDeco: none;
+--navBar_li_backgroundcolor: none;
+--navBar_li_inline_size: 120px;
+--navBar_li_margin: 15px;
+--navBar_li_padding: 15px;
+--navBar_listStyle: none;
+
+
+/* || light theme (LT)*/
+--navBar_color_LT: rgb(0,0,0);
+--navBar_backgroundcolor_LT: rgb(255,255,255);
+--navBar_bordercolor_LT: rgb(0,0,0) none none none;
+--navBar_li_hover_backgroundcolor_LT: rgb(193,193,193);
+
+
+/* || dark theme (DK)*/
+--navBar_color_DK: rgb(255,255,255);
+--navBar_backgroundcolor_DK: rgb(0,0,0);
+--navBar_bordercolor_DK: none none none none;
+--navBar_li_hover_backgroundcolor_DK: rgb(75,69,74);
+
+
+/* || dark theme (DK2)*/
+--body_background_color_DK2: rgb(0,0,0);
+
+--navBar_color_DK2: rgb(229,50,101); /*or rgb(255,1,144);*/
+--navBar_backgroundcolor_DK2: var(--body_background_color_DK2);
+--navBar_dropdown_backgroundcolor_DK2: var(--navBar_backgroundcolor_DK2);
+--navBar_bordercolor_DK2: none none none none;
+--navBar_li_hover_backgroundcolor_DK2: rgb(87,92,117);
+--maincontent_2ndLayer_backgroundcolor_DK2: rgb(65,59,64);
+--maincontent_3rdLayer_backgroundcolor_DK2: rgb(80, 70, 80);
+--item_count_backgroundcolor_DK2: rgb(136,56,255);
+--navBar_item_text_color: rgb(47,214,181);
+
+}

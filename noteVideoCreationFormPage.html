@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="noteVideoCreationFormPage.css">
+  <link rel="stylesheet" href="navBarStyling.css">
+  <link rel="icon" href="notesLogo.png">
+  <script defer src="noteVideoCreationFormPage.js"></script>
+</head>
+
+<body>
+
+  <nav class="navBar">
+
+    <a href="#" class="navLogo noTextDeco"> NOTES </a>
+
+    <ul class="navBar__mainMenu" id="nav_main_menu_id">
+      <li class="navBar__mainMenu__li">
+        <a class="navBar__dropdown__link noTextDeco" href="#">TAGS</a>
+      </li>
+      <li class="navBar__mainMenu__li">
+        <a class="navBar__dropdown__link noTextDeco" href="#">CATEGORIES</a>
+      </li>
+      <li class="navBar__mainMenu__li navBar__dropdown">
+        <a class="navBar__dropdown__link noTextDeco" href="">Create New Note &gt;</a>
+        <!-- links will be set by thymeleaf-->
+        <div class="navBar__dropdown__createNewNoteByType">
+          <ul>
+            <li class="navBar__dropdown__li">
+              <a class="navBar__dropdown__link noTextDeco">Video</a>
+            </li>
+            <li class="navBar__dropdown__li">
+              <a class="navBar__dropdown__link noTextDeco" href="#">Blog Post</a>
+            </li>
+            <li class="navBar__dropdown__li">
+              <a class="navBar__dropdown__link noTextDeco" href="#">Article</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+    <div class="navBar__hamburger" id="hamburger_btn">
+      <div class="navBar__hamburger__line"></div>
+      <div class="navBar__hamburger__line"></div>
+      <div class="navBar__hamburger__line"></div>
+    </div>
+
+  </nav>
+
+  <main>
+    <form action="">
+
+    <section id="titleSection" class="formSection">
+      <h3>Title</h3>
+      <input id="nameInput" class="formSection__inputElem genericInputStyling" type="text" pattern="[\w\s_-]{2,50}" required>
+    </section>
+    <section id="urlSection" class="formSection">
+      <h3>Url</h3>
+      <input id="urlInput" class="formSection__inputElem genericInputStyling" type="text">
+    </section>
+
+
+      <section id="timeStampSection" class="formSection">
+        <h3 class="formSection__heading">TimeStamps</h3>
+        <button id="addNewTimeStampBtn" class="formSection__addNewItemBtn" type="button">+</button>
+        <ul id="timeStampSection__tsList" class="formSection__contentInputList">
+        </ul>
+      </section>
+
+
+      <section id="descriptionSection" class="formSection">
+        <h3 class="formSection__heading">Description</h3>
+        <textArea id="descriptionInput" class="formSection__textArea genericInputStyling" name="" cols="30" rows="10" wrap="soft" resize="none" 
+          data-pattern="^[-\w;\{\}+=\n\s_,\.'()\[\]:]{2,255}$"></textArea>
+      </section>
+
+      <section id="termDefsSection" class="formSection">
+        <h3 class="formSection__heading">Terms/Concept Definitions</h3>
+        <button id="addNewTermDefBtn" class="formSection__addNewItemBtn" type="button">+</button>
+        <ul id="termDefsSection__termDefList" class="formSection__contentInputList">
+        </ul>
+
+      </section>
+      <section id="notesSection" class="formSection">
+        <h3 class="formSection__heading">Notes</h3>
+        <textArea id="noteContentInput" class="formSection__textArea genericInputStyling" name="" cols="30" rows="10" wrap="soft" resize="none"
+          data-pattern="^[-\w;\{\}+=\n\s_,\.'()\[\]:]{2,255}$"></textArea>
+
+      </section>
+      <section id="tagSection" class="formSection">
+        <h3 class="formSection__heading">Tags</h3>
+        <button id="addNewTagBtn" class="formSection__addNewItemBtn" type="button">+</button>
+        <!--maybe use datalist element instead of select -->
+        <select id="tagSection__select" class="formSection__select">
+          <option id="tagOpt_" value="">--choose a tag--</option>
+          <optgroup label="suit symbols">
+            <option id="tagOpt_spade" value="spade" disabled=true>spade</option>
+            <option id="tagOpt_club" value="club">clubs</option>
+            <option id="tagOpt_heart" value="heart">heart</option>
+            <option id="tagOpt_diamond" value="diamond" >spade</option>
+          <optgroup>
+          <optgroup label="animals">
+            <option id="tagOpt_dog" value="dog">dog</option>
+            <option id="tagOpt_cat" value="cat">cat</option>
+            <option id="tagOpt_hamster" value="hamster">hamster</option>
+            <option id="tagOpt_parrot" value="parrot">parrot</option>
+            <option id="tagOpt_spider" value="spider">spider</option>
+            <option id="tagOpt_goldfish" value="goldfish">goldfish</option>
+          </optgroup>
+        </select>
+        <ul id="tagSection__tagList" class="formSection__metaDataInputList">
+        </ul>
+      </section>
+      <section id="categorySection" class="formSection">
+        <h3 class="formSection__heading">Category</h3>
+        <button id="addNewCategoryBtn" class="formSection__addNewItemBtn" type="button">+</button>
+        <ul class="formSection__metaDataInputList">
+          <li>not yet implemented</li>
+        </ul>
+      </section>
+    </form>
+  </main>
+
+  <template id="twoInputComponentTemplate">
+    <li class="twoInputElement twoInputElement--active">
+      <input class="twoInputElement__smallInputField genericInputStyling" type="text" required>
+      <textArea name="" cols="30" rows="10" wrap="soft" resize="none" class="twoInputElement__bigInputField genericInputStyling"></textArea>
+      <section class="inputComponentBtnWrapper">
+        <button class="inputComponentBtn stageBtn" type="button">&#10003;</button>
+        <button class="inputComponentBtn editBtn" type="button">&#x270E;</button>
+        <button class="inputComponentBtn rmBtn" type="button">&times;</button>
+      </section>
+    </li>
+  </template>
+
+  <template id="tagTemplate">
+    <li class="tagItem">
+      <h6 class="tagItem__name"></h6>
+      <button class="tagItem__rmBtn" type="button">&times;</button>
+    </li>
+  </template>
+</body>
+</html>

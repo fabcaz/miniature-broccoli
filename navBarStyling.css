@@ -1,0 +1,181 @@
+@import "globalProps.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  position: absolute;
+}
+
+
+
+
+.navBar{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  position: fixed;
+
+  background: var(--navBar_backgroundcolor_DK2);
+  
+  inline-size: 100%;
+  min-block-size: 50px;
+
+  list-style: var(--navBar_listStyle);
+  list-style-type: var(--navBar_listStyle);
+
+  z-index: 1000;
+}
+
+.navBar::after{
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  block-size: 3px;
+  inline-size: 100%;
+  background: linear-gradient(to right, purple, red, orange);
+}
+
+.navBar + * {
+  margin-block-start: 50px;
+}
+
+.navLogo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 50px; 
+  block-size: 50px;
+  position: absolute;
+  left: 10px;
+  border: var(--navBar_border);
+  color: white;
+}
+
+.navBar__mainMenu{
+display: flex;
+justify-content: space-between;
+align-items: center;
+list-style: var(--navBar_listStyle);
+border: var(--navBar_border);
+color: var(--navBar_color_DK2);
+}
+
+
+.navBar__dropdown{
+  display: flex;
+  position: relative;
+  align-items: center;
+  background-color: var(--navBar_dropdown_backgroundcolor_DK2);
+}
+
+.navBar__hamburger{
+display: none;
+}
+
+.navBar__hamburger__line{
+  height: 1px;
+  width: 20px;
+  margin: 4px;
+  border: solid;
+  border-top: none;
+  border-color: white;
+  border-radius: 25%;
+  background-color: transparent;
+  
+}
+/*
+ TODO add this style to an active_navLink class to also hilight the active page
+ */
+.navBar__mainMenu__li:hover{
+  background-color: var(--navBar_li_hover_backgroundcolor_DK2);
+}
+
+.navBar__dropdown__li{
+  inline-size: var(--navBar_li_inline_size);
+  margin: var(--navBar_li_margin);
+  padding: var(--navBar_li_padding);
+  list-style: var(--navBar_listStyle);
+  border-block-start: solid;
+  border-block-start-width: 1px;
+  border-block-start-color: white;
+}
+
+.navBar__dropdown__li:hover{
+  background-color: var(--navBar_li_hover_backgroundcolor_DK2);
+}
+
+.navBar__dropdown__createNewNoteByType{
+  display:none;
+  padding: 10px;
+
+  position:absolute;
+  top: 45px;
+  left: 0;
+  background: grey;
+  border-radius: 0 0 7% 7%;
+  background-color: var(--navBar_dropdown_backgroundcolor_DK2);
+  z-index: 501; 
+}
+
+.navBar__dropdown:hover .navBar__dropdown__createNewNoteByType{
+  display: block;
+}
+
+.navBar__mainMenu__li{
+  background-color: var(--navBar_li_backgroundcolor);
+  padding: 15px; 
+  list-style: var(--navBar_listStyle);
+}
+
+.navBar__dropdown__link{
+  color: var(--navBar_color_DK2);
+}
+.navBar__dropdown__link:active{
+transform: scale(50%);
+}
+
+.noTextDeco{
+  text-decoration: var(--navBar_textDeco);
+}
+
+@media all and (max-width: 880px){
+
+  .navBar{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navBar__mainMenu{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    list-style: var(--navBar_listStyle);
+    border: var(--navBar_border);
+  }
+  .active_menu{
+
+    display: block;
+    visibility: visible;
+  }
+
+  .navBar__hamburger{
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .nav_hamburger--clicked{
+    transform: rotate(90deg);
+  }
+
+  .navBar__dropdown__createNewNoteByType{
+    top: 0px;
+    left: 100%;
+  }
+}
